@@ -1,0 +1,6 @@
+name = "feed-tracker"
+app_id = "cd2794aa-79a7-4bae-aa39-faf32adeecc8"
+app_url = ""
+
+[processes]
+web = "gunicorn --pythonpath src main:server"

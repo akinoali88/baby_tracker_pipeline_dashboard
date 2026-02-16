@@ -1,0 +1,41 @@
+[project]
+name = "10-baby-feeding-schedules"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "dash[cloud]>=3.3.0",
+    "dash-bootstrap-components>=2.0.4",
+    "dash-bootstrap-templates>=2.1.0",
+    "openpyxl>=3.1.5",
+    "pandas>=2.3.3",
+    "plotly>=6.5.0",
+    "pydantic>=2.12.5",
+    "pydantic-settings>=2.12.0",
+    "statsmodels>=0.14.6",
+    "dash-core-components>=2.0.0",
+    "dash-html-components>=2.0.0",
+    "dash-renderer>=1.9.1",
+    "gunicorn>=24.0.0",
+    "xlrd>=2.0.2",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+    "xlrd>=2.0.2",
+]
+
+[tool.dash]
+entrypoint = "src main:server"
+
+[tool.pylint.main]
+init-hook = "import sys; sys.path.append('./src')"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.uv.build-backend]
+module-name = "app"
