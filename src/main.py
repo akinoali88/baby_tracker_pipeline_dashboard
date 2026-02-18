@@ -44,6 +44,8 @@ from models.children import settings
 # hold your processed DataPipeline objects
 child_pipelines = []
 
+# Get child settings from .env file and create DataPipeline objects
+# If no .env file is found, use default settings defined in models/children.py
 for child in settings.children:
     pipeline = DataPipeline(
         name=child.name,
@@ -57,8 +59,8 @@ child_1_data = child_pipelines[0]
 child_2_data = child_pipelines[1]
 
 # Run data piepline
-child_2_data.process()
 child_1_data.process()
+child_2_data.process()
 
 # Export processed data to Excel files
 child_1_data.export_data(

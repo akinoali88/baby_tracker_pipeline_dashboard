@@ -10,6 +10,7 @@ import numpy as np
 from pydantic import ValidationError
 
 from models.children import FeedingData
+from models.children import settings
 
 class DataPipeline:
     '''
@@ -26,7 +27,8 @@ class DataPipeline:
                  file_name: str,
                  dob: datetime,
                  input_dir_path: str = 'data/live data',
-                 excel_params: dict = None):
+                 excel_params: dict = None,
+                 use_dummy_data: bool = True):
 
         '''
         Initializes the DataProcessor with configuration.
@@ -36,6 +38,7 @@ class DataPipeline:
         self.file_name = file_name
         self.dob = pd.Timestamp(dob)
         self.input_dir_path = input_dir_path
+        self.dummy_data = use_dummy_data
 
         # Initialize blank dataframes to be updated during processing
         self.raw_data: pd.DataFrame = None
@@ -69,7 +72,22 @@ class DataPipeline:
 
         # Use the stored path attribute
         if not self.full_file_path.exists():
-            raise FileNotFoundError(f"File not found at {self.full_file_path}")
+
+            # If dummy data is enabled, load dummy data instead of raising an error
+            if self.dummy_data:
+
+                try:
+                    self.file_name = settings.get_file_by_name(self.name)
+                except ValueError as e:
+                    print(e)
+
+                print(f"\n⚠️ File not found at {self.full_file_path}. "
+                    "Loading dummy data instead for development purposes.")
+
+                self.full_file_path = Path.cwd() / 'data/dummy data' / self.file_name
+
+            else:
+                raise FileNotFoundError(f"File not found at {self.full_file_path}")
 
         # Determine the file type
         suffix = self.full_file_path.suffix.lower()

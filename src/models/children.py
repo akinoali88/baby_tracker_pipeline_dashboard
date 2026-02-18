@@ -80,13 +80,20 @@ class AppSettings(BaseSettings):
     # Define 2 default children here
     children: List[ChildConfig] = [
         ChildConfig(name="Jon Snow", file_name="child_1.csv", dob="2025-01-01"),
-        ChildConfig(name="Arya Stark", file_name="child_2.csv", dob="2020-11-12")
+        ChildConfig(name="Arya Stark", file_name="child_2.csv", dob="2025-01-01")
     ]
 
     # Tell Pydantic to look for a .env file
     model_config = SettingsConfigDict(env_file='.env',
                                       env_file_encoding='utf-8',
                                       extra='ignore')
+
+    def get_file_by_name(self, name: str) -> str:
+        '''Helper to find a filename by child name'''
+        for child in self.children:
+            if child.name.lower() == name.lower():
+                return child.file_name
+        raise ValueError(f"No child found with name: {name}")
 
 # Create a singleton instance to use throughout your app
 settings = AppSettings()
