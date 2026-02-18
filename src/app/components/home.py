@@ -131,7 +131,7 @@ def update_daily_metrics(slider_range, child_selection, stored_daily_data):
     # Convert stored JSON data back to DataFrame
     daily_df = pd.read_json(StringIO(stored_daily_data), orient='records')
 
-        # Filter data based on slider range
+    # Filter data based on slider range
     low, high = slider_range
     mask = ((daily_df['age_in_weeks'] >= low) &
             (daily_df['age_in_weeks'] <= high) &
