@@ -10,7 +10,6 @@ import pandas as pd
 import dash_bootstrap_components as dbc
 from app.dashboard_logic import (
     create_stat_card,
-    get_daily_feed_metrics,
     create_page_header,
     create_child_checklist,
     create_age_range_slider
@@ -132,4 +131,19 @@ def update_daily_metrics(slider_range, child_selection, stored_daily_data):
     # Convert stored JSON data back to DataFrame
     daily_df = pd.read_json(StringIO(stored_daily_data), orient='records')
 
-    return get_daily_feed_metrics(slider_range, child_selection, daily_df)
+        # Filter data based on slider range
+    low, high = slider_range
+    mask = ((daily_df['age_in_weeks'] >= low) &
+            (daily_df['age_in_weeks'] <= high) &
+            (daily_df['name'].isin(child_selection)))
+    filtered_df = daily_df[mask]
+
+    # Generate figure
+    daily_feed_fig = daily_feed_vol_by_age(filtered_df)
+
+    # Calculate Statistics for scorecard
+    total_vol = f"{filtered_df['daily_feed_volume_ml'].sum() / 1000:.1f} L"
+    avg_feed = f"{filtered_df['daily_feed_volume_ml'].mean():.0f} mL"
+    total_count = f"{len(filtered_df)}"
+
+    return daily_feed_fig, total_vol, avg_feed, total_count

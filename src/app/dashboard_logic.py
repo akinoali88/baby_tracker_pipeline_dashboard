@@ -8,54 +8,6 @@ and child checklists
 import dash_bootstrap_components as dbc
 from dash import dcc, html
 import pandas as pd
-from .base_graphs import daily_feed_vol_by_age
-
-
-def get_daily_feed_metrics(slider_range: list,
-                           child_selection: list,
-                           daily_df: pd.DataFrame) -> dict:
-    '''
-    Calculate key daily feed metrics for the first page of the dataframe, including
-    slider ranges, updated figures from the call back and the statistics for the scorecard.
-    
-    Parameters:
-        slider_range : list
-            A list containing [low, high] values representing the age range in weeks to filter data.
-        child_selection : list
-            A list of child names to include in the filtered results.
-        daily_df : pd.DataFrame
-            The input dataframe containing daily feed data with columns 'age_in_weeks', 'name', 
-            and 'daily_feed_volume_ml'.
-    Returns:
-        - daily_feed_fig : plotly.graph_objects.Figure
-            The generated figure showing daily feed volume by age.
-        - total_vol : str
-            Total feed volume in liters (L) for the filtered data.
-        - avg_feed : str
-            Average feed volume in milliliters (mL) for the filtered data.
-        - total_count : str
-            Total count of feed records in the filtered data.
-    
-    '''
-
-    # Filter data based on slider range
-    low, high = slider_range
-    mask = ((daily_df['age_in_weeks'] >= low) &
-            (daily_df['age_in_weeks'] <= high) &
-            (daily_df['name'].isin(child_selection)))
-    filtered_df = daily_df[mask]
-
-    # Generate figure
-    daily_feed_fig = daily_feed_vol_by_age(filtered_df)
-
-    # Calculate Statistics for scorecard
-    total_vol = f"{filtered_df['daily_feed_volume_ml'].sum() / 1000:.1f} L"
-    avg_feed = f"{filtered_df['daily_feed_volume_ml'].mean():.0f} mL"
-    total_count = f"{len(filtered_df)}"
-
-    return daily_feed_fig, total_vol, avg_feed, total_count
-
-
 
 def create_stat_card(title: str,
                      id_name: str,

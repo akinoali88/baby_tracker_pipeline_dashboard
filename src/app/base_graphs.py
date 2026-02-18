@@ -52,7 +52,7 @@ def daily_feed_vol_by_age(df: pd.DataFrame) -> Figure:
 
     fig.update_xaxes(
         title_text='Age (weeks)',    # This changes the axis label without affecting tooltips
-        automargin=True,,
+        automargin=True,
         tickmode='array',
         showline=True,
         tickvals=week_indices,
