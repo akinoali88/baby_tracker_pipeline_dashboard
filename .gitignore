@@ -10,11 +10,10 @@ wheels/
 .venv
 
 # data files
-data/
+data/live data/
 reporting/
 *.xlsx
 *.xls
-*.csv
 
 # .env files
 .env
@@ -26,6 +25,3 @@ reporting/
 
 # Support files
 demo/
-
-# Docker files
-Dockerfile
