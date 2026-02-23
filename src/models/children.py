@@ -79,8 +79,8 @@ class AppSettings(BaseSettings):
     # Pydantic can parse JSON strings from .env into lists of objects!
     # Define 2 default children here
     children: List[ChildConfig] = [
-        ChildConfig(name="Jon Snow", file_name="child_1.csv", dob="2025-01-01"),
-        ChildConfig(name="Arya Stark", file_name="child_2.csv", dob="2025-01-01")
+        ChildConfig(name="Jon Snow", file_name="data/dummy data/child_1.csv", dob="2025-01-01"),
+        ChildConfig(name="Arya Stark", file_name="data/dummy data/child_2.csv", dob="2025-01-01")
     ]
 
     # Tell Pydantic to look for a .env file
