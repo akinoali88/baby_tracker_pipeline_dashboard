@@ -36,7 +36,7 @@ from dash import Dash
 import dash_bootstrap_components as dbc
 from dash_bootstrap_templates import load_figure_template
 
-from pipeline.data_pipeline import DataPipeline
+from src.pipeline.data_pipeline import DataPipeline
 from app.app_factory import create_dash_app
 from models.children import settings
 
