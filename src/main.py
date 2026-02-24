@@ -36,7 +36,7 @@ from dash import Dash
 import dash_bootstrap_components as dbc
 from dash_bootstrap_templates import load_figure_template
 
-from src.pipeline.data_pipeline import DataPipeline
+from pipeline.data_pipeline import DataPipeline
 from app.app_factory import create_dash_app
 from models.children import settings
 
@@ -62,12 +62,6 @@ child_2_data = child_pipelines[1]
 child_1_data.process()
 child_2_data.process()
 
-# Export processed data to Excel files
-child_1_data.export_data(
-    output_file_name="child_1_feeding_schedule.xlsx",
-    export_errors=True,
-    export_validated=True
-)
 # Create charts
 combined_data = pd.concat(
     [child_2_data.transformed_data, child_1_data.transformed_data],
