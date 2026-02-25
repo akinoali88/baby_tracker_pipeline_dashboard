@@ -36,7 +36,9 @@ An end-to-end Python application designed to track and visualize infant feeding 
   - [🛠️ Requirements](#️-requirements)
     - [🐍 Python Environment](#-python-environment)
     - [📦 Key Dependencies](#-key-dependencies)
-  - [🧪 Running Tests](#-running-tests)
+  - [☁️ Deployment](#️-deployment)
+    - [1. Primary Settings](#1-primary-settings)
+    - [2. Critical Code Requirement](#2-critical-code-requirement)
   - [📜 License](#-license)
   - [🤝 Contributing](#-contributing)
 
@@ -151,12 +153,17 @@ For each child you will need to provide a **name** and a **date of birth**.
 
 ## 🚀 Usage
 
-Run the data pipeline and launch the interactive dashboard:
+Run the data pipeline and launch the interactive dashboard
 
 ```bash
-python main.py
+python -m src.main
 ```
 
+Run with uv: 
+
+```bash
+uv run python3 -m src.main
+```
 The dashboard will be available at `http://127.0.0.1:8050` by default.
 
 ## Data Validation & Error Logging
@@ -271,6 +278,32 @@ To run this project, you will need the following environment and dependencies:
 | **Dash bootstrap components** | `>=2.0.4` |  Bootstrap components for Plotly Dash to improve styling |
 
  
+## ☁️ Deployment
+
+This application is designed to be deployed as a **Web Service** on [Render](https://render.com). To ensure the nested project structure and internal modules (like `pipeline` and `models`) load correctly, follow the configuration steps below.
+
+---
+
+### 1. Primary Settings
+When setting up your service, use these core configurations:
+
+| Setting | Value |
+| :--- | :--- |
+| **Runtime** | `Python` |
+| **Build Command** | `pip install -r requirements.txt` |
+| **Start Command** | `gunicorn src.main:server` |
+
+### 2. Critical Code Requirement
+For the **Start Command** to work, Gunicorn needs to find the "server" variable. Ensure your `src/main.py` exposes the server at the top level (not indented):
+
+```python
+# In src/main.py
+app = Dash(__name__, ...)
+app.layout = ...
+
+# This must be OUTSIDE the 'if __name__ == "__main__":' block
+server = app.server
+
 ## 🧪 Running Tests
 
 Run all unit tests using:
