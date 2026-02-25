@@ -82,8 +82,10 @@ DBC_CSS = 'https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.mi
 app = Dash(__name__, external_stylesheets=[dbc.themes.MINTY, DBC_CSS, dbc.icons.BOOTSTRAP])
 app.layout = create_dash_app(combined_data, combined_daily_data, combined__weekly_data )
 
+server = app.server
+
 # Create Dash app
 if __name__ == "__main__":
 
     app.run(debug=True, use_reloader=False, port=8051)
-    server = app.server
+
