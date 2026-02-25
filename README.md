@@ -39,6 +39,7 @@ An end-to-end Python application designed to track and visualize infant feeding 
   - [☁️ Deployment](#️-deployment)
     - [1. Primary Settings](#1-primary-settings)
     - [2. Critical Code Requirement](#2-critical-code-requirement)
+  - [🧪 Running Tests](#-running-tests)
   - [📜 License](#-license)
   - [🤝 Contributing](#-contributing)
 
@@ -305,6 +306,7 @@ app.layout = ...
 
 # This must be OUTSIDE the 'if __name__ == "__main__":' block
 server = app.server
+```
 
 ## 🧪 Running Tests
 
