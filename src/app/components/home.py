@@ -8,13 +8,13 @@ from dash import dcc, html, callback, Input, Output
 from dash.exceptions import PreventUpdate
 import pandas as pd
 import dash_bootstrap_components as dbc
-from app.dashboard_logic import (
+from src.app.dashboard_logic import (
     create_stat_card,
     create_page_header,
     create_child_checklist,
     create_age_range_slider
     )
-from app.base_graphs import daily_feed_vol_by_age
+from src.app.base_graphs import daily_feed_vol_by_age
 
 def render_home_tab(daily_df: pd.DataFrame,
                     slider_parameters: dict,

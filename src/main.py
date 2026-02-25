@@ -2,15 +2,14 @@
 Baby Feeding Schedules Main Application Module
 
 This module serves as the entry point for the Baby Feeding Schedules application.
-It orchestrates the data processing pipeline for multiple children, exports processed
-data to Excel files, and creates an interactive Dash dashboard for visualization.
+It orchestrates the data processing pipeline for multiple children,
+and creates an interactive Dash dashboard for visualization.
 
 Workflow:
 1. Initializes DataPipeline objects for each child defined in settings
 2. Processes raw feeding schedule data for each child
-3. Exports processed data and validation errors to Excel
-4. Combines data from all children across different time periods (raw, daily, weekly)
-5. Instantiate Dash web application with interactive charts and visualizations
+3. Combines data from all children across different time periods (raw, daily, weekly)
+4. Instantiate Dash web application with interactive charts and visualizations
 
 Dependencies:
     - pandas: Data manipulation and concatenation
@@ -62,12 +61,6 @@ child_2_data = child_pipelines[1]
 child_1_data.process()
 child_2_data.process()
 
-# Export processed data to Excel files
-child_1_data.export_data(
-    output_file_name="child_1_feeding_schedule.xlsx",
-    export_errors=True,
-    export_validated=True
-)
 # Create charts
 combined_data = pd.concat(
     [child_2_data.transformed_data, child_1_data.transformed_data],
@@ -88,8 +81,8 @@ DBC_CSS = 'https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.mi
 app = Dash(__name__, external_stylesheets=[dbc.themes.MINTY, DBC_CSS, dbc.icons.BOOTSTRAP])
 app.layout = create_dash_app(combined_data, combined_daily_data, combined__weekly_data )
 
+server = app.server
+
 # Create Dash app
 if __name__ == "__main__":
-
     app.run(debug=True, use_reloader=False, port=8051)
-    server = app.server

@@ -6,8 +6,8 @@ from io import StringIO
 from dash import dcc, html, callback, Input, Output
 import dash_bootstrap_components as dbc
 import pandas as pd
-from app.base_graphs import night_vs_day_feed_volume
-from app.dashboard_logic import create_page_header
+from src.app.base_graphs import night_vs_day_feed_volume
+from src.app.dashboard_logic import create_page_header
 
 
 def render_night_vs_day_feeding(

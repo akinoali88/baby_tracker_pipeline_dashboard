@@ -8,8 +8,8 @@ import dash_bootstrap_components as dbc
 import pandas as pd
 
 
-from app.dashboard_logic import get_slider_params
-from app.components import (
+from src.app.dashboard_logic import get_slider_params
+from src.app.components import (
     render_home_tab,
     render_individual_feeds_tab,
     render_night_vs_day_feeding,

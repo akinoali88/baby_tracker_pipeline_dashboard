@@ -9,8 +9,8 @@ import pandas as pd
 import numpy as np
 from pydantic import ValidationError
 
-from models.children import FeedingData
-from models.children import settings
+from src.models.children import FeedingData
+from src.models.children import settings
 
 class DataPipeline:
     '''
