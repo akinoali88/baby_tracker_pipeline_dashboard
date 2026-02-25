@@ -95,7 +95,7 @@ This project uses **Pydantic Settings** to manage multi-child configurations. To
 
 ```env
 CHILDREN='
-  [{"name": "Child 1", "file_name": "file 1.xlsx", "dob": "<dob 1>"}, 
+  [{"name": "Child 1", "file_name": "file 1.xlsx", "dob": "dob 1"}, 
    {"name": "Child 2", "file_name": "file 2.xlsx", "dob": "dob 2"}]'
 ```
 
@@ -143,20 +143,22 @@ The pipeline expects feeding logs with the following columns matching the `Feedi
 - `activity`: `Feeding`
 - `type`: `Left`, `Right`, `Bottle`
 
-Place your feeding log file in the `data/` folder (`.xlsx` or `.csv` format):
+Place your feeding log file in the `data/live data` folder (`.xlsx` or `.csv` format):
 
 ```bash
-data/file_name.xlsx
+data/live data/file_name.xlsx
 ```
 
 For each child you will need to provide a **name** and a **date of birth**.
+
+If no live data is provided, the data pipeline default (where the `use_dummy_data` set to `True` will load random test data).
 
 ## 🚀 Usage
 
 Run the data pipeline and launch the interactive dashboard
 
 ```bash
-python -m src.main
+python3 -m src.main
 ```
 
 Run with uv: 
@@ -263,8 +265,8 @@ Exported files are saved to the `reporting/` folder.
 To run this project, you will need the following environment and dependencies:
 
 ### 🐍 Python Environment
-* **Python 3.14+**: This project utilizes the latest Python features and optimizations.
-* **uv**: It is highly recommended to use [uv](https://github.com/astral-sh/uv) for dependency synchronization and virtual environment management.
+* **Python 3.13+**: This project utilizes the recent Python features and optimizations.
+* **uv**: It is recommended to use [uv](https://github.com/astral-sh/uv) for dependency synchronization and virtual environment management.
 
 ### 📦 Key Dependencies
 | Dependency | Version | Purpose |
