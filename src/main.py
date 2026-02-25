@@ -2,15 +2,14 @@
 Baby Feeding Schedules Main Application Module
 
 This module serves as the entry point for the Baby Feeding Schedules application.
-It orchestrates the data processing pipeline for multiple children, exports processed
-data to Excel files, and creates an interactive Dash dashboard for visualization.
+It orchestrates the data processing pipeline for multiple children,
+and creates an interactive Dash dashboard for visualization.
 
 Workflow:
 1. Initializes DataPipeline objects for each child defined in settings
 2. Processes raw feeding schedule data for each child
-3. Exports processed data and validation errors to Excel
-4. Combines data from all children across different time periods (raw, daily, weekly)
-5. Instantiate Dash web application with interactive charts and visualizations
+3. Combines data from all children across different time periods (raw, daily, weekly)
+4. Instantiate Dash web application with interactive charts and visualizations
 
 Dependencies:
     - pandas: Data manipulation and concatenation
@@ -86,6 +85,4 @@ server = app.server
 
 # Create Dash app
 if __name__ == "__main__":
-
     app.run(debug=True, use_reloader=False, port=8051)
-
