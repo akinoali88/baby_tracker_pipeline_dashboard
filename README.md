@@ -4,7 +4,7 @@
 
 **A production-grade ETL pipeline and interactive Dash application for multi-child nutritional tracking.**
 
-https://github.com/user-attachments/assets/de07eabc-7789-481e-aa2b-2742890e4be2
+https://github.com/user-attachments/assets/be1d6c44-811a-4efd-8adf-2eace5380735
 
 An end-to-end Python application designed to track and visualize infant feeding schedules using an object-oriented architecture.
 
