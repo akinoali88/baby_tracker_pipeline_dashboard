@@ -1,10 +1,14 @@
+
+
+
+
 # 🍼 Baby Feed Tracker: End-to-End Data Pipeline
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Python >=3.14](https://img.shields.io/badge/python-%3E%3D3.14-blue.svg)](https://www.python.org/) [![pandas >=2.3.3](https://img.shields.io/badge/pandas-%3E%3D2.3.3-blue.svg)](https://pypi.org/project/pandas/) [![plotly >=6.5.0](https://img.shields.io/badge/plotly-%3E%3D6.5.0-blue.svg)](https://pypi.org/project/plotly/) [![dash >=3.3.0](https://img.shields.io/badge/dash-%3E%3D3.3.0-blue.svg)](https://pypi.org/project/dash/) [![pydantic >=2.12.5](https://img.shields.io/badge/pydantic-%3E%3D2.12.5-blue.svg)](https://pypi.org/project/pydantic/) [![dash-bootstrap-components >=2.0.4](https://img.shields.io/badge/dash--bootstrap--components-%3E%3D2.0.4-blue.svg)](https://pypi.org/project/dash-bootstrap-components/)
 
 **A production-grade ETL pipeline and interactive Dash application for multi-child nutritional tracking.**
 
-https://github.com/user-attachments/assets/be1d6c44-811a-4efd-8adf-2eace5380735
+https://github.com/user-attachments/assets/ac02a92e-01d6-4dfa-8e2a-81e5b198db9f
 
 An end-to-end Python application designed to track and visualize infant feeding schedules using an object-oriented architecture.
 
